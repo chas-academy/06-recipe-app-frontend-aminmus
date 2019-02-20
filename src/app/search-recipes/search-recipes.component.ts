@@ -12,8 +12,8 @@ export class SearchRecipesComponent implements OnInit {
   ngOnInit() {
   }
 
-  displayResults() {
-      
+  getRecipes(searchTerm) {
+    console.log('have some recipes');
   }
 
 }

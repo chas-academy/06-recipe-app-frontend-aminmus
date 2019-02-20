@@ -2,7 +2,7 @@
   search-recipes works!
 </p>
 
-<form type="text" class="inline">
-    <input type="text" class="form-control" #search>
-    <button type="button" class="btn btn-primary" (click)="displayResults()"></button>
-</form>
+
+    <input #search type="text">
+    <button type="button" class="btn btn-primary" (click)="getRecipes(search.value); search.value=''"></button>
+
