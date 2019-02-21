@@ -3,11 +3,11 @@ import { GetRecipesService } from '../get-recipes.service';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-search-recipes',
-    templateUrl: './search-recipes.component.html',
-    styleUrls: ['./search-recipes.component.scss']
+    selector: 'app-recipes',
+    templateUrl: './recipes.component.html',
+    styleUrls: ['./recipes.component.scss']
 })
-export class SearchRecipesComponent implements OnInit {
+export class RecipesComponent implements OnInit {
 
     constructor(private GetRecipesService: GetRecipesService) { }
 

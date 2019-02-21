@@ -4,12 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchRecipesComponent
+    RecipesComponent
   ],
   imports: [
     BrowserModule,
