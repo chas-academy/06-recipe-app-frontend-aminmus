@@ -1,3 +1,5 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,22 +7,24 @@ import { Injectable } from '@angular/core';
 })
 export class GetRecipesService {
 
-  constructor() { }
+  constructor(
+      private http: HttpClient
+  ) { }
 
 
 
-  getRecipes(): void {
-    // Make api url here
+  public getRecipes(searchTerm: string): Observable<any> {
 
     // Yummly API information
-    const apiInfo: object = {
+    const apiInfo = {
         appId: 'eed9bde0',
         appKey: '8ec48492633380399c709fec6e66a86f'
     }
-    // TODO: use baseUrl to create custom searches with user input
-    // const baseUrl: string = http://api.yummly.com/v1/api/recipes?_app_id=app-id&_app_key=app-key&your _search_parameters
+
+    const baseUrl: string = `http://api.yummly.com/v1/api/recipes?_app_id=${apiInfo.appId}&_app_key=${apiInfo.appKey}&q=${searchTerm}`;
+
+    return this.http.get(baseUrl);
   }
-  
 }
 
 
