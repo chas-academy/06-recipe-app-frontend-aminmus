@@ -4,8 +4,10 @@
 <ul>
     <li *ngFor="let recipe of recipes">
         <div>
-            <img src="{{recipe.imageUrlsBySize[90]}}" alt="{{recipe.recipeName}}">
-            <span>{{recipe.recipeName}}</span>
+            <a href="">
+                <img *ngIf="recipe.imageUrlsBySize" src="{{recipe.imageUrlsBySize[90]}}" alt="{{recipe.recipeName}}">
+                <span>{{recipe.recipeName}}</span>
+            </a>
         </div>
     </li>
 </ul>
