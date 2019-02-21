@@ -1,9 +1,11 @@
-    <input #search type="text">
-    <button type="button" class="btn btn-primary" 
-        (click)="getRecipes(search.value); search.value=''">Search</button>
+<input #search type="text">
+<button type="button" class="btn btn-primary" (click)="getRecipes(search.value); search.value=''">Search</button>
 
-        <ul>
-            <li *ngFor="let recipe of recipes">
-                <span>{{recipe.recipeName}}</span>
-            </li>
-        </ul>
+<ul>
+    <li *ngFor="let recipe of recipes">
+        <div>
+            <img src="{{recipe.imageUrlsBySize[90]}}" alt="{{recipe.recipeName}}">
+            <span>{{recipe.recipeName}}</span>
+        </div>
+    </li>
+</ul>
