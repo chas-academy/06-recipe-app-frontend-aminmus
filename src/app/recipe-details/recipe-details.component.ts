@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { RecipesComponent } from "../recipes/recipes.component";
+import { GetRecipesService } from '../get-recipes.service';
 
 @Component({
-  selector: 'app-recipe-details',
-  templateUrl: './recipe-details.component.html',
-  styleUrls: ['./recipe-details.component.scss']
+    selector: 'app-recipe-details',
+    templateUrl: './recipe-details.component.html',
+    styleUrls: ['./recipe-details.component.scss']
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor() { }
+    constructor(private GetRecipesService: GetRecipesService) { }
 
-  ngOnInit() {
-  }
+    public recipe: any;
 
+    ngOnInit() {
+        this.getRecipe(window.location.pathname);   // Get url path from browser and make api call
+    }
+
+    private getRecipe(recipeId: string) {
+        const observer = {
+            next: result => console.log(this.recipe = result),
+            error: err => console.log('An error has occured: ' + err)
+        }
+
+        this.GetRecipesService.getRecipe(recipeId)
+            .subscribe(observer);
+    }
 }
+

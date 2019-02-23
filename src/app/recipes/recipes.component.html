@@ -4,7 +4,7 @@
 <ul>
     <li *ngFor="let recipe of recipes">
         <div>
-            <a href="">
+            <a routerLink="/recipe/{{recipe.id}}">
                 <img *ngIf="recipe.imageUrlsBySize" src="{{recipe.imageUrlsBySize[90]}}" alt="{{recipe.recipeName}}">
                 <span>{{recipe.recipeName}}</span>
             </a>

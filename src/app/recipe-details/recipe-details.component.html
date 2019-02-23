@@ -1,3 +1,4 @@
-<p>
-  recipe-details works!
-</p>
+<div>
+    <img *ngIf="recipe.images" src="{{recipe.images[0].hostedLargeUrl}}" alt="{{recipe.name}}">
+    <span>{{recipe.name}}</span>
+</div>

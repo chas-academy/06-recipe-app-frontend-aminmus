@@ -25,7 +25,6 @@ export class RecipesComponent implements OnInit {
 
         this.GetRecipesService.getRecipes(searchTerm)
             .subscribe(observer);
-        
     }
 
 }
