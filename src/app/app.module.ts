@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    GraphQLModule,
 
   ],
   providers: [],
