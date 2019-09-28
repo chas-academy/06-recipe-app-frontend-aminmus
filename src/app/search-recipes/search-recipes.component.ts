@@ -4,7 +4,6 @@ import { GetRecipesService } from '../get-recipes.service';
 import { SearchFilter, Recipe } from '../types';
 import { SearchRecipesQueryResponse } from '../grapqhql';
 
-
 @Component({
   selector: 'app-search-recipes',
   templateUrl: './search-recipes.component.html',
