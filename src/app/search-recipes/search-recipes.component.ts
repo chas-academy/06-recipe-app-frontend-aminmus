@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { GetRecipesService } from '../get-recipes.service';
 import { SearchFilter, Recipe } from '../types';
-import { SearchRecipesQueryResponse } from '../grapqhql';
+import { SearchRecipesQueryResponse } from '../graphql';
 
 @Component({
   selector: 'app-search-recipes',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetRecipesService } from '../get-recipes.service';
+import { Recipe } from '../types';
 
 @Component({
   selector: 'app-recipe-details',
@@ -10,7 +11,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   constructor(private getRecipesService: GetRecipesService) { }
 
-  public recipe: any;
+  public recipe: Recipe;
 
   ngOnInit() {
   //     this.getRecipe(window.location.pathname);   // Get url path from browser and make api call
