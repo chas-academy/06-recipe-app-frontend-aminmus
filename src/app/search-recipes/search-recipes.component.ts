@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+
+import { GetRecipesService } from '../get-recipes.service';
+import { SearchFilter, Recipe } from '../types';
+import { SearchRecipesQueryResponse } from '../grapqhql';
 
 
 @Component({
@@ -10,33 +11,23 @@ import gql from 'graphql-tag';
   styleUrls: ['./search-recipes.component.scss']
 })
 export class SearchRecipesComponent implements OnInit {
+  constructor(private getRecipesService: GetRecipesService) { }
 
-  constructor() { }
+  recipes: Recipe[];
+  loading = false;
+
+  searchQuery = 'chicken'; // <- Example, get this from template instead
+  filters: SearchFilter;
 
   ngOnInit() {
+    this.getRecipes();
   }
 
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-export class GetRecipesService {
-
-  constructor(private apollo: Apollo) { }
-
-  public searchRecipes(searchQuery: string, filters: any) {
-    this.apollo.query({
-      query: gql`
-      {
-        searchRecipes(searchQuery: ${searchQuery}) {
-          label,
-          image,
-          uri,
-          source,
-        }
-      }
-      `,
+  private getRecipes(): void {
+    this.getRecipesService.searchRecipes(this.searchQuery, this.filters).subscribe((response: SearchRecipesQueryResponse) => {
+      this.recipes = response.searchRecipes;
+      this.loading = response.loading;
+      console.log(response);
     });
   }
 }

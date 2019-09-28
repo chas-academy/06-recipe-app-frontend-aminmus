@@ -4,16 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+// import { RecipesComponent } from './recipes/recipes.component';
+// import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { GraphQLModule } from './graphql.module';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesComponent,
-    RecipeDetailsComponent,
+    // RecipesComponent,
+    // RecipeDetailsComponent,
     SearchRecipesComponent
   ],
   imports: [
