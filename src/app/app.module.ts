@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { GraphQLModule } from '../modules/graphql.module';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
-import { RecipesComponent } from './recipes/recipes.component';
+import { RecipesComponent } from './search-recipes/recipes/recipes.component';
 
 @NgModule({
   declarations: [
