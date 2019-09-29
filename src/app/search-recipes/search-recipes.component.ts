@@ -12,7 +12,7 @@ import { SearchRecipesQueryResponse } from '../graphql';
 export class SearchRecipesComponent implements OnInit {
   constructor(private getRecipesService: GetRecipesService) { }
 
-  private recipes: Recipe[];
+  protected recipes: Recipe[];
   private loading = false;
 
   private searchQuery = 'chicken'; // <- Example, get this from template instead

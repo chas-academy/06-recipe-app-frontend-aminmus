@@ -1,1 +1,9 @@
-<p>recipes works!</p>
+<h2>Search results</h2>
+<div *ngFor="let recipe of recipes">
+    <a href="recipe/{{recipe.encodedUri}}">
+        <h3>{{recipe.label}}</h3>
+        <p>From "{{recipe.source}}"</p>
+        <img src="{{recipe.image}}" alt="{{recipe.label}}">
+    </a>
+
+</div>
