@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetRecipesService } from '../get-recipes.service';
 import { Recipe } from '../types';
+import { FindRecipeQueryResponse } from '../graphql';
 
 @Component({
   selector: 'app-recipe-details',
@@ -8,23 +9,22 @@ import { Recipe } from '../types';
   styleUrls: ['./recipe-details.component.scss']
 })
 export class RecipeDetailsComponent implements OnInit {
-
   constructor(private getRecipesService: GetRecipesService) { }
 
-  public recipe: Recipe;
+  private recipe: Recipe;
+  private loading: boolean;
 
   ngOnInit() {
-  //     this.getRecipe(window.location.pathname);   // Get url path from browser and make api call
+    // Example URI, change later to get dynamically
+    this.getRecipe('http://www.edamam.com/ontologies/edamam.owl#recipe_48ed6e7ba8720ac3b782d7f388660adb');
   }
 
-  // private getRecipe(recipeId: string) {
-  //     const observer = {
-  //         next: result => console.log(this.recipe = result),
-  //         error: err => console.log('An error has occured: ' + err)
-  //     }
-
-  //     this.GetRecipesService.getRecipe(recipeId)
-  //         .subscribe(observer);
-  // }
+  private getRecipe(uri: string) {
+    this.getRecipesService.findRecipe(uri).subscribe((response: FindRecipeQueryResponse) => {
+      this.recipe = response.data.findRecipe;
+      this.loading = response.loading;
+      console.log(this.recipe);
+    });
+  }
 }
 

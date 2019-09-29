@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 // import { RecipesComponent } from './recipes/recipes.component';
-// import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 
 const routes: Routes = [
     // { path: '**', component: AppComponent},
     { path: '', component: SearchRecipesComponent },
     // { path: 'recipe/:id', component: RecipeDetailsComponent }
+    { path: 'reciped', component: RecipeDetailsComponent } // temporary dev route
 ];
 
 @NgModule({

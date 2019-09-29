@@ -12,11 +12,11 @@ import { SearchRecipesQueryResponse } from '../graphql';
 export class SearchRecipesComponent implements OnInit {
   constructor(private getRecipesService: GetRecipesService) { }
 
-  recipes: Recipe[];
-  loading = false;
+  private recipes: Recipe[];
+  private loading = false;
 
-  searchQuery = 'chicken'; // <- Example, get this from template instead
-  filters: SearchFilter;
+  private searchQuery = 'chicken'; // <- Example, get this from template instead
+  private filters: SearchFilter;
 
   ngOnInit() {
     this.getRecipes();
@@ -24,7 +24,7 @@ export class SearchRecipesComponent implements OnInit {
 
   private getRecipes(): void {
     this.getRecipesService.searchRecipes(this.searchQuery, this.filters).subscribe((response: SearchRecipesQueryResponse) => {
-      this.recipes = response.searchRecipes;
+      this.recipes = response.data.searchRecipes;
       this.loading = response.loading;
       console.log(response);
     });

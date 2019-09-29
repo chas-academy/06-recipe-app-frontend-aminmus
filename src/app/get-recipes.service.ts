@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 
-import { SEARCH_RECIPES_QUERY } from './graphql';
+import { SEARCH_RECIPES_QUERY, FIND_RECIPE_QUERY } from './graphql';
 import { SearchFilter } from './types';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class GetRecipesService {
 
   public findRecipe(uri: string): any {
     return this.apollo.watchQuery({
-      query: SEARCH_RECIPES_QUERY,
-      variables: {uri},
+      query: FIND_RECIPE_QUERY,
+      variables: { uri },
     }).valueChanges;
   }
 }
