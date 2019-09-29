@@ -19,7 +19,6 @@ import { SearchRecipesComponent } from './search-recipes/search-recipes.componen
     HttpClientModule,
     AppRoutingModule,
     GraphQLModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
