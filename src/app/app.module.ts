@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { GraphQLModule } from './graphql.module';
+import { GraphQLModule } from '../modules/graphql.module';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 import { RecipesComponent } from './recipes/recipes.component';
 
