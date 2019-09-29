@@ -8,13 +8,15 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { GraphQLModule } from '../modules/graphql.module';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 import { RecipesComponent } from './search-recipes/recipes/recipes.component';
+import { SearchFormComponent } from './search-recipes/search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeDetailsComponent,
     SearchRecipesComponent,
-    RecipesComponent
+    RecipesComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
