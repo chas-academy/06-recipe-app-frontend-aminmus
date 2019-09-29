@@ -20,7 +20,7 @@ export enum DietEnum {
 }
 
 export interface Recipe {
-  uri: string;
+  encodedUri: string;
   label: string;
   image: string;
   source: string;

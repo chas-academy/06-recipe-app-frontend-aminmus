@@ -6,9 +6,8 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 
 const routes: Routes = [
-    { path: '', component: SearchRecipesComponent },
-    // { path: 'recipe/:id', component: RecipeDetailsComponent }
-    { path: 'reciped', component: RecipeDetailsComponent } // temporary dev route
+    { path: 'search', component: SearchRecipesComponent },
+    { path: 'recipe/:uri', component: RecipeDetailsComponent }
 ];
 
 @NgModule({

@@ -5,7 +5,7 @@ export const SEARCH_RECIPES_QUERY = gql`
 query searchForRecipes($searchQuery: String!, $filters: Filters) {
  searchRecipes(searchQuery: $searchQuery, filters: $filters) {
    label,
-   uri,
+   encodedUri,
    image,
    source,
    dietLabels,
@@ -23,12 +23,12 @@ export interface SearchRecipesQueryResponse {
 }
 
 export const FIND_RECIPE_QUERY = gql`
-query findRecipe($uri: String!) {
-  findRecipe: findRecipeByURI(uri: $uri) {
+query findRecipe($encodedUri: String!) {
+  findRecipe: findRecipeByURI(encodedUri: $encodedUri) {
     label,
     dietLabels,
     healthLabels,
-    uri,
+    encodedUri,
     image,
     source,
     sourceUrl,

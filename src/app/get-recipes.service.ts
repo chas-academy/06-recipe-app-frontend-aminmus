@@ -21,10 +21,10 @@ export class GetRecipesService {
     }).valueChanges;
   }
 
-  public findRecipe(uri: string): any {
+  public findRecipe(encodedUri: string): any {
     return this.apollo.watchQuery({
       query: FIND_RECIPE_QUERY,
-      variables: { uri },
+      variables: { encodedUri },
     }).valueChanges;
   }
 }
