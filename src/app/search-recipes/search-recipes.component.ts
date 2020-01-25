@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { GetRecipesService } from '../get-recipes.service';
 import { SearchFilter, Recipe } from '../types';
 import { SearchRecipesQueryResponse } from '../graphql';
+
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @Component({
   selector: 'app-search-recipes',
@@ -11,6 +13,9 @@ import { SearchRecipesQueryResponse } from '../graphql';
 })
 export class SearchRecipesComponent implements OnInit {
   constructor(private getRecipesService: GetRecipesService) { }
+
+  @ViewChild(SearchFormComponent, { static: false })
+  private formComponent: SearchFormComponent;
 
   protected recipes: Recipe[];
   private loading = false;
@@ -23,10 +28,12 @@ export class SearchRecipesComponent implements OnInit {
   }
 
   private getRecipes(): void {
-    this.getRecipesService.searchRecipes(this.searchQuery, this.filters).subscribe((response: SearchRecipesQueryResponse) => {
-      this.recipes = response.data.searchRecipes;
-      this.loading = response.loading;
-      console.log(response);
-    });
+    this.getRecipesService
+      .searchRecipes(this.searchQuery, this.filters)
+      .subscribe((response: SearchRecipesQueryResponse) => {
+        this.recipes = response.data.searchRecipes;
+        this.loading = response.loading;
+        console.log(response);
+      });
   }
 }
