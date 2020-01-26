@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, AfterViewInit } from '@angular/core';
 
 import { GetRecipesService } from '../get-recipes.service';
 import { SearchFilter, Recipe } from '../types';
@@ -11,7 +11,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
   templateUrl: './search-recipes.component.html',
   styleUrls: ['./search-recipes.component.scss']
 })
-export class SearchRecipesComponent implements OnInit {
+export class SearchRecipesComponent {
   constructor(private getRecipesService: GetRecipesService) { }
 
   @ViewChild(SearchFormComponent, { static: false })
@@ -20,16 +20,11 @@ export class SearchRecipesComponent implements OnInit {
   protected recipes: Recipe[];
   private loading = false;
 
-  private searchQuery = 'chicken'; // <- Example, get this from template instead
   private filters: SearchFilter;
 
-  ngOnInit() {
-    this.getRecipes();
-  }
-
-  private getRecipes(): void {
+  protected getRecipes(formValues): void {
     this.getRecipesService
-      .searchRecipes(this.searchQuery, this.filters)
+      .searchRecipes(formValues.query, formValues.filter)
       .subscribe((response: SearchRecipesQueryResponse) => {
         this.recipes = response.data.searchRecipes;
         this.loading = response.loading;
