@@ -1,10 +1,15 @@
 <p>search-form works!</p>
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-  <input
-    type="search"
-    name="recipe-search"
-    formControlName="query"
-    placeholder="chicken"
-  />
-  <button type="submit">Search</button>
+    <input type="search" name="recipe-search" formControlName="query" placeholder="chicken" />
+    <ng-container *ngFor="let healthLabel of options.healthLabels">
+        <input name="{{healthLabel}}" type="checkbox" value="{{healthLabel}}" id="{{healthLabel}}" />
+        <label for="{{healthLabel}}">{{healthLabel}}</label>
+    </ng-container>
+
+    <ng-container *ngFor="let dietLabel of options.dietLabels">
+        <input name="{{dietLabel}}" type="checkbox" value="{{dietLabel}}" id="{{dietLabel}}" />
+        <label for="{{dietLabel}}">{{dietLabel}}</label>
+    </ng-container>
+
+    <button type="submit">Search</button>
 </form>
