@@ -33,3 +33,9 @@ export interface Recipe {
   dietLabels?: string[];
   healthLabels?: string[];
 }
+
+export interface ICheckBoxItem {
+  id?: string;
+  selected: boolean;
+  name: string;
+}

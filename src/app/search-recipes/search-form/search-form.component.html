@@ -1,15 +1,28 @@
 <p>search-form works!</p>
 <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <input type="search" name="recipe-search" formControlName="query" placeholder="chicken" />
-    <ng-container *ngFor="let healthLabel of options.healthLabels">
-        <input name="{{healthLabel}}" type="checkbox" value="{{healthLabel}}" id="{{healthLabel}}" />
-        <label for="{{healthLabel}}">{{healthLabel}}</label>
-    </ng-container>
+    <ng-container formGroupName="filters">
 
-    <ng-container *ngFor="let dietLabel of options.dietLabels">
-        <input name="{{dietLabel}}" type="checkbox" value="{{dietLabel}}" id="{{dietLabel}}" />
-        <label for="{{dietLabel}}">{{dietLabel}}</label>
-    </ng-container>
+        <ng-container formArrayName="healthLabels">
 
+
+            <ng-container [formGroup]="healthLabel"
+                *ngFor="let healthLabel of healthLabels.controls">
+                <input name="{{healthLabel.get('id').value}}" [formControl]="healthLabel.get('selected')" type="checkbox" value="{{healthLabel.get('id').value}}"
+                    id="{{healthLabel.get('id').value}}" />
+                <label for="{{healthLabel.get('id').value}}">{{healthLabel.get('name').value}}</label>
+            </ng-container>
+        </ng-container>
+
+        <ng-container formArrayName="dietLabels">
+            <ng-container [formGroup]="dietLabels" *ngFor="let dietLabel of dietLabels.controls">
+                <input name="{{dietLabel.get('id').value}}" [formControl]="dietLabel.get('selected')" type="checkbox" value="{{dietLabel.get('id').value}}"
+                    id="{{dietLabel.get('id').value}}" />
+                <label for="{{dietLabel.get('id').value}}">{{dietLabel.get('name').value}}</label>
+            </ng-container>
+        </ng-container>
+
+
+    </ng-container>
     <button type="submit">Search</button>
 </form>
