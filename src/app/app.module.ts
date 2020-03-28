@@ -10,6 +10,8 @@ import { GraphQLModule } from '../modules/graphql.module';
 import { SearchRecipesComponent } from './search-recipes/search-recipes.component';
 import { RecipesComponent } from './search-recipes/recipes/recipes.component';
 import { SearchFormComponent } from './search-recipes/search-form/search-form.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SearchFormComponent } from './search-recipes/search-form/search-form.co
     RecipeDetailsComponent,
     SearchRecipesComponent,
     RecipesComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule,
