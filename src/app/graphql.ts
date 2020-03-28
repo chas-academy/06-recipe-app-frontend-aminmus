@@ -47,3 +47,28 @@ export interface FindRecipeQueryResponse {
 interface FindRecipeData {
   findRecipe: Recipe;
 }
+
+export interface SignupMutationResponse {
+  data: {
+    token: string;
+    user: {
+      name: string,
+      email: string,
+      password: string,
+    };
+  };
+  loading: boolean;
+}
+
+export const SIGNUP_MUTATION = gql`
+  mutation signup {
+    signup(name: $name, email: $email, password: $password) {
+      token,
+      user {
+        id,
+        name,
+        email,
+      }
+    }
+  }
+`;
