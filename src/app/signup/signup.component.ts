@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Form } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { SignupService } from '../signup.service';
 
@@ -21,9 +21,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signupForm.value);
-    const [name, email, password] = this.signupForm.value;
-    console.log(name);
-    // this.signupService.signup(name, email, password);
+    const { name, email, password } = this.signupForm.value;
+    console.log(name, email, password);
   }
 }

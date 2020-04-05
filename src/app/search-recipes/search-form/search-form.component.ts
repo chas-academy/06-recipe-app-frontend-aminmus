@@ -14,9 +14,7 @@ export class SearchFormComponent implements OnInit {
   @Output() getRecipes = new EventEmitter();
   public options;
 
-  constructor(private formBuilder: FormBuilder) {
-
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.options = this.makeOptions();
