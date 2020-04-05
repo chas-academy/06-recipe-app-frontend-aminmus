@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Form } from '@angular/forms';
 
+import { SignupService } from '../signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, FormArray, Form } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   public signupForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -19,8 +20,10 @@ export class SignupComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
     console.log(this.signupForm.value);
+    const [name, email, password] = this.signupForm.value;
+    console.log(name);
+    // this.signupService.signup(name, email, password);
   }
 }
