@@ -72,3 +72,27 @@ export const SIGNUP_MUTATION = gql`
     }
   }
 `;
+
+export interface LoginMutationResponse {
+  data: {
+    token: string;
+    user: {
+      email: string,
+      password: string,
+    };
+  };
+  loading: boolean;
+}
+
+export const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token,
+      user {
+        id,
+        name,
+        email,
+      }
+    }
+  }
+`;
