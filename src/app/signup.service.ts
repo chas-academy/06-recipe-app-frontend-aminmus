@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
+
 import { SIGNUP_MUTATION } from './graphql';
-import { Observable } from 'apollo-link';
-import { ApolloQueryResult } from 'apollo-client';
 
 @Injectable({
   providedIn: 'root'
