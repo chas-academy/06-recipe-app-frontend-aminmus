@@ -75,11 +75,14 @@ export const SIGNUP_MUTATION = gql`
 
 export interface LoginMutationResponse {
   data: {
-    token: string;
-    user: {
-      email: string,
-      password: string,
-    };
+    login: {
+      token: string;
+      user: {
+        id: string,
+        email: string,
+        password: string,
+      };
+    }
   };
   loading: boolean;
 }
