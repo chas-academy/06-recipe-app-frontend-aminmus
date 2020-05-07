@@ -16,8 +16,6 @@ export class LoginService {
         email,
         password,
       },
-    }).subscribe(({ data }) => {
-      return data;
-    }, (error) => console.log('There was an error sending the query', error));
+    });
   }
 }
