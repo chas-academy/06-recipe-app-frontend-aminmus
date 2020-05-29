@@ -49,15 +49,14 @@ interface FindRecipeData {
 }
 
 export interface SignupMutationResponse {
-  data: {
+  signup?: {
     token: string;
     user: {
+      id: string,
       name: string,
       email: string,
-      password: string,
     };
   };
-  loading: boolean;
 }
 
 export const SIGNUP_MUTATION = gql`
@@ -74,17 +73,14 @@ export const SIGNUP_MUTATION = gql`
 `;
 
 export interface LoginMutationResponse {
-  data: {
-    login: {
-      token: string;
-      user: {
-        id: string,
-        email: string,
-        password: string,
-      };
-    }
+  login?: {
+    token: string;
+    user: {
+      id: string,
+      name: string,
+      email: string,
+    };
   };
-  loading: boolean;
 }
 
 export const LOGIN_MUTATION = gql`
@@ -96,6 +92,23 @@ export const LOGIN_MUTATION = gql`
         name,
         email,
       }
+    }
+  }
+`;
+export interface GetUserResponse {
+  me?: {
+    id: string,
+    name: string,
+    email: string,
+  };
+}
+
+export const GET_USER_QUERY = gql`
+  query me {
+    me {
+        id,
+        name,
+        email,
     }
   }
 `;
