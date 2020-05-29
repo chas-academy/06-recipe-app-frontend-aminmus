@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { LoginService } from '../login.service';
-import { LoginMutationResponse } from '../graphql';
+import { UserService } from 'app/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { LoginMutationResponse } from '../graphql';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -20,12 +20,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     const { email, password } = this.loginForm.value;
-    this.loginService.login(email, password).subscribe((response: LoginMutationResponse) => {
-      localStorage.setItem('token', response.data.login.token);
-      console.log('token: ', localStorage.getItem('token'));
-    }, (error) => console.log('There was an error sending the query', error),
-      () => console.log('completed'));
+    const isSuccessfulLogin = await this.userService.login(email, password);
+    if (isSuccessfulLogin) { this.router.navigateByUrl('/'); }
   }
 }
