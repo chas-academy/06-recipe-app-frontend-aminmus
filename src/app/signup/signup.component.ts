@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { SignupService } from '../signup.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +10,7 @@ import { SignupService } from '../signup.service';
 })
 export class SignupComponent implements OnInit {
   public signupForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private signupService: SignupService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -20,8 +20,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     const { name, email, password } = this.signupForm.value;
-    this.signupService.signup(name, email, password);
+    await this.userService.signup(name, email, password);
   }
 }
