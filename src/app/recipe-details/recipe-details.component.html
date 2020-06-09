@@ -1,4 +1,15 @@
-<!-- <div>
-    <img *ngIf="recipe.images" src="{{recipe.images[0].hostedLargeUrl}}" alt="{{recipe.name}}">
-    <span>{{recipe.name}}</span>
-</div> -->
+<div *ngIf="recipe">
+
+    <h1>{{recipe.label}}</h1>
+    <div>
+        <img *ngIf="recipe.image" src="{{recipe.image}}" alt="{{recipe.label}}">
+    </div>
+
+
+    <div *ngIf="isLoggedIn">
+        <button (click)="setIsChoosingList(true)">Add to list</button>
+        <div *ngIf="isChoosingList">
+            
+        </div>
+    </div>
+</div>
