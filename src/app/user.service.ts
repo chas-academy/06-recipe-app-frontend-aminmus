@@ -10,8 +10,6 @@ import { GET_USER_QUERY, GetUserResponse, LOGIN_MUTATION, LoginMutationResponse,
 export class UserService {
   constructor(private apollo: Apollo) { }
 
-  public isLoggedIn = false;
-
   public async login(email, password): Promise<boolean> {
     try {
       const response = await this.apollo.mutate<LoginMutationResponse>({
@@ -23,11 +21,11 @@ export class UserService {
       }).toPromise();
 
       localStorage.setItem('token', response.data.login.token);
-      this.isLoggedIn = true;
+      return true;
     } catch (error) {
       console.log('There was an error during authentication', error);
+      return false;
     }
-    return this.isLoggedIn;
   }
 
   logout() { }
@@ -54,7 +52,6 @@ export class UserService {
       const userResponse = await this.getCurrentUser();
       // Check if token is valid
       if (userResponse.data.me.id) {
-        this.isLoggedIn = true;
         return true;
       }
     }
