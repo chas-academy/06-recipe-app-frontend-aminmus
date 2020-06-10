@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { Recipe } from './types';
+import { Recipe, RecipeList } from './types';
 
 export const SEARCH_RECIPES_QUERY = gql`
 query searchForRecipes($searchQuery: String!, $filters: Filters) {
@@ -111,4 +111,37 @@ export const GET_USER_QUERY = gql`
         email,
     }
   }
+`;
+export interface GetRecipeListsResponse {
+  myRecipeLists?: RecipeList[];
+}
+
+export const GET_RECIPE_LISTS_QUERY = gql`
+  query myRecipeLists {
+    id,
+    name,
+    recipes {
+      label,
+      encodedUri,
+    },
+  }
+`;
+
+export interface CreateRecipeListMutationResponse {
+  createRecipeList: RecipeList;
+}
+
+export const CREATE_RECIPE_LIST_MUTATION = gql`
+mutation createRecipeList($name: String!, $ownerEmail: String!){
+  createRecipeList(data: {name: $name, owner: {connect: {email: $ownerEmail }}})
+  {
+    id,
+    name,
+    recipes {
+      encodedUri,
+      label,
+      image,
+    }
+  }
+}
 `;
