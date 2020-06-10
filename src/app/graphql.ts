@@ -118,6 +118,7 @@ export interface GetRecipeListsResponse {
 
 export const GET_RECIPE_LISTS_QUERY = gql`
   query myRecipeLists {
+    myRecipeLists {
     id,
     name,
     recipes {
@@ -125,7 +126,7 @@ export const GET_RECIPE_LISTS_QUERY = gql`
       encodedUri,
     },
   }
-`;
+}`;
 
 export interface CreateRecipeListMutationResponse {
   createRecipeList: RecipeList;
