@@ -1,0 +1,8 @@
+<p>recipe-lists works!</p>
+
+<div *ngIf="recipeLists">
+    <h2>My Recipe Lists</h2>
+    <li *ngFor="let list of recipeLists">
+        {{list.name}}
+    </li>
+</div>

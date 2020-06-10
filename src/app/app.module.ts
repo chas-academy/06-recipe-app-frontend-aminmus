@@ -12,6 +12,7 @@ import { RecipesComponent } from './search-recipes/recipes/recipes.component';
 import { SearchFormComponent } from './search-recipes/search-form/search-form.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SignupComponent } from './signup/signup.component';
     RecipesComponent,
     SearchFormComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    RecipeListsComponent
   ],
   imports: [
     FormsModule,

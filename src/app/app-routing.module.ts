@@ -7,12 +7,14 @@ import { SearchRecipesComponent } from './search-recipes/search-recipes.componen
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
 
 const routes: Routes = [
   { path: 'search', component: SearchRecipesComponent, canActivate: [AuthGuard] },
   { path: 'recipe/:uri', component: RecipeDetailsComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: RecipeListsComponent }
 ];
 
 @NgModule({
