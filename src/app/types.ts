@@ -23,8 +23,8 @@ export interface Recipe {
   encodedUri: string;
   label: string;
   image: string;
-  source: string;
-  ingredients: string[];
+  source?: string;
+  ingredients?: string[];
   sourceUrl?: string;
   servings?: number;
   calories?: number;
@@ -32,6 +32,12 @@ export interface Recipe {
   totalNutrients?: object;
   dietLabels?: string[];
   healthLabels?: string[];
+}
+
+export interface RecipeList {
+  id: string;
+  name: string;
+  recipes: Recipe[];
 }
 
 export interface ICheckBoxItem {
