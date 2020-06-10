@@ -18,13 +18,10 @@ export class RecipeListService {
   }
 
   /** Create a recipe list for the given user */
-  public createRecipeList(ownerEmail: string) {
+  public createRecipeList(ownerEmail: string, listName: string) {
     return this.apollo.mutate<CreateRecipeListMutationResponse>({
       mutation: CREATE_RECIPE_LIST_MUTATION,
-      variables: { ownerEmail },
+      variables: { ownerEmail, name: listName },
     }).toPromise();
   }
 }
-
-
-
