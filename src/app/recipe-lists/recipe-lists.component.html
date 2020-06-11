@@ -1,5 +1,12 @@
 <p>recipe-lists works!</p>
 
+<form [formGroup]="listForm" (ngSubmit)="onSubmit()">
+    <input id="listName" type="text" name="listName" formControlName="listName" />
+    <label for="listName">list name</label>
+
+    <button type="submit">Create new list</button>
+</form>
+
 <div *ngIf="recipeLists">
     <h2>My Recipe Lists</h2>
     <li *ngFor="let list of recipeLists">
