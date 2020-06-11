@@ -21,6 +21,7 @@ export class UserService {
       }).toPromise();
 
       localStorage.setItem('token', response.data.login.token);
+      localStorage.setItem('email', response.data.login.user.email);
       return true;
     } catch (error) {
       console.log('There was an error during authentication', error);
