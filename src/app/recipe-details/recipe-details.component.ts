@@ -16,11 +16,11 @@ export class RecipeDetailsComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  private recipe: Recipe;
+  public recipe: Recipe;
   private loading: boolean;
   private recipeUri: string;
-  private isChoosingList = false;
-  private isLoggedIn = localStorage.getItem('token');
+  public isChoosingList = false;
+  public isLoggedIn = localStorage.getItem('token');
 
   ngOnInit() {
     this.route.params.subscribe((params) => this.recipeUri = params.uri);
@@ -35,7 +35,7 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  private setIsChoosingList(state: boolean) {
+  public setIsChoosingList(state: boolean) {
 
     // Set isChoosingList to true on press
     // Render lists to choose from

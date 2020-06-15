@@ -14,15 +14,15 @@ import { SearchFormComponent } from './search-form/search-form.component';
 export class SearchRecipesComponent {
   constructor(private getRecipesService: GetRecipesService) { }
 
-  @ViewChild(SearchFormComponent, { static: false })
+  @ViewChild(SearchFormComponent)
   private formComponent: SearchFormComponent;
 
-  protected recipes: Recipe[];
+  public recipes: Recipe[];
   private loading = false;
 
   private filters: SearchFilter;
 
-  protected getRecipes(formValues): void {
+  public getRecipes(formValues): void {
 
     const filters = formValues.filters;
 
