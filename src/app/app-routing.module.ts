@@ -10,11 +10,11 @@ import { AuthGuard } from './auth.guard';
 import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
 
 const routes: Routes = [
-  { path: 'search', component: SearchRecipesComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchRecipesComponent },
   { path: 'recipe/:uri', component: RecipeDetailsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: RecipeListsComponent }
+  { path: 'profile', component: RecipeListsComponent, canActivate: [AuthGuard]  }
 ];
 
 @NgModule({
