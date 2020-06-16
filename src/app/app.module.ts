@@ -13,6 +13,14 @@ import { SearchFormComponent } from './search-recipes/search-form/search-form.co
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -23,7 +31,8 @@ import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
     SearchFormComponent,
     LoginComponent,
     SignupComponent,
-    RecipeListsComponent
+    RecipeListsComponent,
+    NavigationComponent
   ],
   imports: [
     FormsModule,
@@ -32,6 +41,13 @@ import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
     HttpClientModule,
     AppRoutingModule,
     GraphQLModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
