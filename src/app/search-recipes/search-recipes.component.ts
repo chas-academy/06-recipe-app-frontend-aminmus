@@ -51,6 +51,7 @@ export class SearchRecipesComponent {
           this.loading = response.loading;
           console.log(response);
         });
+      return;
     }
 
     this.getRecipesService
@@ -60,5 +61,6 @@ export class SearchRecipesComponent {
         this.loading = response.loading;
         console.log(response);
       });
+    return;
   }
 }
