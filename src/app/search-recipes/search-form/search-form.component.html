@@ -1,28 +1,39 @@
-<p>search-form works!</p>
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <input type="search" name="recipe-search" formControlName="query" placeholder="chicken" />
-    <ng-container formGroupName="filters">
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
 
-        <ng-container formArrayName="healthLabels">
+            <mat-form-field class="example-form-field">
+                <mat-label>Search</mat-label>
+                <input matInput type="search" formControlName="query">
+                <button mat-button *ngIf="searchForm.value.query" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="searchForm.value.query=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
 
+            <ng-container formGroupName="filters">
+                <section>
+                    <ng-container formArrayName="healthLabels">
+                        <ng-container [formGroup]="healthLabel" *ngFor="let healthLabel of healthLabels.controls">
+                            <mat-checkbox name="{{healthLabel.get('id').value}}"
+                                [formControl]="healthLabel.get('selected')" type="checkbox"
+                                value="{{healthLabel.get('id').value}}" id="{{healthLabel.get('id').value}}">
+                                {{healthLabel.get('name').value}}</mat-checkbox>
+                        </ng-container>
+                    </ng-container>
+                </section>
 
-            <ng-container [formGroup]="healthLabel"
-                *ngFor="let healthLabel of healthLabels.controls">
-                <input name="{{healthLabel.get('id').value}}" [formControl]="healthLabel.get('selected')" type="checkbox" value="{{healthLabel.get('id').value}}"
-                    id="{{healthLabel.get('id').value}}" />
-                <label for="{{healthLabel.get('id').value}}">{{healthLabel.get('name').value}}</label>
+                <section>
+                    <ng-container formArrayName="dietLabels">
+                        <ng-container [formGroup]="dietLabels" *ngFor="let dietLabel of dietLabels.controls">
+                            <mat-checkbox name="{{dietLabel.get('id').value}}" [formControl]="dietLabel.get('selected')"
+                                type="checkbox" value="{{dietLabel.get('id').value}}"
+                                id="{{dietLabel.get('id').value}}">{{dietLabel.get('name').value}}</mat-checkbox>
+                        </ng-container>
+                    </ng-container>
+                </section>
             </ng-container>
-        </ng-container>
-
-        <ng-container formArrayName="dietLabels">
-            <ng-container [formGroup]="dietLabels" *ngFor="let dietLabel of dietLabels.controls">
-                <input name="{{dietLabel.get('id').value}}" [formControl]="dietLabel.get('selected')" type="checkbox" value="{{dietLabel.get('id').value}}"
-                    id="{{dietLabel.get('id').value}}" />
-                <label for="{{dietLabel.get('id').value}}">{{dietLabel.get('name').value}}</label>
-            </ng-container>
-        </ng-container>
-
-
-    </ng-container>
-    <button type="submit">Search</button>
-</form>
+            <button type="submit">Search</button>
+        </form>
+    </mat-card-content>
+</mat-card>
