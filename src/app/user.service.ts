@@ -31,7 +31,19 @@ export class UserService {
 
   logout() { }
 
-  public async signup(name, email, password): Promise<SignupMutationResponse['signup']> {
+  public async signupAndLogin(name, email, password): Promise<boolean> {
+    try {
+      const response = await this.signup(name, email, password);
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('email', response.user.email);
+      return true;
+    } catch (error) {
+      console.error('There was an error during sign up or authentication', error);
+      return false;
+    }
+  }
+
+  private async signup(name, email, password): Promise<SignupMutationResponse['signup']> {
     try {
       const signupResponse = await this.apollo.mutate<SignupMutationResponse>({
         mutation: SIGNUP_MUTATION,
