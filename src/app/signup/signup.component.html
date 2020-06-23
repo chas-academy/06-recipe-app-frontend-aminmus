@@ -1,13 +1,35 @@
-<p>signup works!</p>
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <input id="name" type="text" name="name" formControlName="name" />
-    <label for="name">name</label>
+<mat-card>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" type="text" name="name" formControlName="name" required />
+        </mat-form-field>
 
-    <input id="email" type="text" name="email" formControlName="email" />
-    <label for="email">email</label>
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" type="text" name="email" formControlName="email" required />
+        </mat-form-field>
 
-    <input id="password" type="password" name="password" formControlName="password" />
-    <label for="password">password</label>
-    
-    <button type="submit">Sign Up</button>
-</form>
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" name="password" formControlName="password"
+            required />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
+            <mat-label>Confirm password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="confirm-password" name="confirm-password" formControlName="passwordConfirmation"
+            required />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary">Log in</button>
+    </form>
+</mat-card>
