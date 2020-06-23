@@ -1,12 +1,12 @@
 <mat-card>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
             <mat-label>Email</mat-label>
             <input matInput id="email" type="email" name="email" formControlName="email" required />
             <mat-error *ngIf="loginForm.get('email').invalid">{{getEmailErrorMessage()}}</mat-error>
         </mat-form-field>
-    
-        <mat-form-field appearance="fill">
+
+        <mat-form-field appearance="fill" hideRequiredMarker="true">
             <mat-label>Enter your password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" id="password" name="password" formControlName="password"
                 required />
