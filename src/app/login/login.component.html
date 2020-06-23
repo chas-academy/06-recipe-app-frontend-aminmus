@@ -7,7 +7,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" hideRequiredMarker="true">
-            <mat-label>Enter your password</mat-label>
+            <mat-label>Password</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" id="password" name="password" formControlName="password"
                 required />
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
