@@ -25,8 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     SignupComponent,
     RecipeListsComponent,
-    NavigationComponent
+    NavigationComponent,
+    LogoutComponent
   ],
   imports: [
     FormsModule,
