@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -10,15 +10,28 @@ export class AuthGuard implements CanActivate {
 
   constructor(private userService: UserService) { }
 
-  async canActivate(
+  canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> {
-
-    if (localStorage.getItem('token') && await this.userService.checkAuth()) {
-      return true;
-    } else {
-      return false;
-    }
+    state: RouterStateSnapshot) {
+    return new Observable<boolean>((observer: Observer<boolean>) => {
+      this.userService.isLoggedIn.subscribe(async (isloggedIn) => {
+        if (isloggedIn) {
+          const tokenIsValid = await this.userService.checkAuth();
+          if (tokenIsValid) {
+            observer.next(true);
+            observer.complete();
+          } else {
+            this.userService.logout();
+            observer.next(false);
+            console.log('Session invalidated, logged out');
+            observer.complete();
+          }
+        } else {
+          observer.next(false);
+          observer.complete();
+        }
+      });
+    });
   }
 
 }
