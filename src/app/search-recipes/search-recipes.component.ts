@@ -49,7 +49,6 @@ export class SearchRecipesComponent {
         .subscribe((response: SearchRecipesQueryResponse) => {
           this.recipes = response.data.searchRecipes;
           this.loading = response.loading;
-          console.log(response);
         });
       return;
     }
@@ -59,7 +58,6 @@ export class SearchRecipesComponent {
       .subscribe((response: SearchRecipesQueryResponse) => {
         this.recipes = response.data.searchRecipes;
         this.loading = response.loading;
-        console.log(response);
       });
     return;
   }
