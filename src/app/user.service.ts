@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_USER_QUERY, GetUserResponse, LOGIN_MUTATION, LoginMutationResponse, SIGNUP_MUTATION, SignupMutationResponse } from './graphql';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +15,13 @@ export class UserService {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private apollo: Apollo, private router: Router) {
-    console.log('User Service');
+  constructor(private apollo: Apollo) {
     const token = localStorage.getItem('token');
     if (token) {
       this.token = token;
       this.loggedIn.next(true);
-      console.log('Logged in from memory');
     } else {
       this.logout();
-      console.log('Session invalidated, logged out');
     }
   }
 
@@ -48,11 +44,8 @@ export class UserService {
     }
   }
 
-  logout(redirect = false) {
+  logout() {
     this.setLoggedIn(false);
-    if (redirect) {
-      this.router.navigate(['/']);
-    }
   }
 
   public async signupAndLogin(name, email, password): Promise<boolean> {
