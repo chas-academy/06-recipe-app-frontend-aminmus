@@ -8,13 +8,15 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { RecipeListsComponent } from './recipe-lists/recipe-lists.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'search', component: SearchRecipesComponent },
   { path: 'recipe/:uri', component: RecipeDetailsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: RecipeListsComponent, canActivate: [AuthGuard]  }
+  { path: 'logout', component: LogoutComponent },
+  { path: 'profile', component: RecipeListsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
