@@ -1,11 +1,21 @@
 <p>recipe-lists works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>Add new recipe list</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>List name</mat-label>
+                <input matInput type="text" formControlName="listName" />
+            </mat-form-field>
 
-<form [formGroup]="listForm" (ngSubmit)="onSubmit()">
-    <input id="listName" type="text" name="listName" formControlName="listName" />
-    <label for="listName">list name</label>
-
-    <button type="submit">Create new list</button>
-</form>
+            <button mat-raised-button type="submit" color="primary">Create new list</button>
+        </form>
+    </mat-card-content>
+</mat-card>
 
 <div *ngIf="recipeLists">
     <h2>My Recipe Lists</h2>
