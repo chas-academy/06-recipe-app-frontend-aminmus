@@ -7,9 +7,16 @@
 
 
     <div *ngIf="isLoggedIn">
-        <button (click)="setIsChoosingList(true)">Add to list</button>
-        <div *ngIf="isChoosingList">
-            
-        </div>
+        <h2>Add to recipe list</h2>
+
+        <mat-form-field>
+            <mat-label>Recipe list</mat-label>
+            <mat-select [formControl]="chosenListId">
+                <mat-option *ngFor="let list of myRecipeLists" [value]="list.id">
+                    {{list.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="saveToList()">Save to list</button>
     </div>
 </div>

@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { LogoutComponent } from './logout/logout.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
@@ -60,6 +61,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

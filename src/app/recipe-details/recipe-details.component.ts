@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { GetRecipesService } from '../get-recipes.service';
 import { FindRecipeQueryResponse } from '../graphql';
 import { Recipe } from '../types';
+import { RecipeListService } from 'app/recipe-list.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-details',
@@ -13,18 +15,23 @@ import { Recipe } from '../types';
 export class RecipeDetailsComponent implements OnInit {
   constructor(
     private getRecipesService: GetRecipesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private recipeListService: RecipeListService,
   ) { }
 
   public recipe: Recipe;
+  public myRecipeLists;
   private loading: boolean;
   private recipeUri: string;
-  public isChoosingList = false;
+  public chosenListId = new FormControl();
   public isLoggedIn = localStorage.getItem('token');
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe((params) => this.recipeUri = params.uri);
     this.getRecipe(encodeURIComponent(this.recipeUri));
+
+    const { data: { myRecipeLists } } = await this.recipeListService.getRecipeLists();
+    this.myRecipeLists = myRecipeLists;
   }
 
   private getRecipe(encodedUri: string) {
@@ -35,14 +42,9 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  public setIsChoosingList(state: boolean) {
-
-    // Set isChoosingList to true on press
-    // Render lists to choose from
-    // Upon choosing a list, set isChoosingList to false again
-
-    this.isChoosingList = state;
-    console.log(this.isChoosingList);
+  public async saveToList() {
+    const response = await this.recipeListService.addRecipeToList(this.recipe.encodedUri, this.chosenListId.value);
+    console.log(response);
   }
 }
 

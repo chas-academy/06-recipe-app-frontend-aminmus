@@ -157,3 +157,20 @@ mutation createRecipeList($name: String!, $ownerEmail: String!){
   }
 }
 `;
+
+export interface AddRecipeToListMutationResponse {
+  addRecipeToList?: {
+    id: string,
+    updatedAt: Date
+  };
+}
+
+export const ADD_RECIPE_TO_LIST_MUTATION = gql`
+mutation addRecipeToList($encodedRecipeUri: String!, $listId: ID!){
+  addRecipeToList(recipeURI: $encodedRecipeUri, id: $listId)
+  {
+    id,
+    updatedAt,
+  }
+}
+`;
