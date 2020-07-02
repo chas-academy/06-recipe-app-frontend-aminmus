@@ -26,6 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LogoutComponent } from './logout/logout.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LogoutComponent } from './logout/logout.component';
     SignupComponent,
     RecipeListsComponent,
     NavigationComponent,
-    LogoutComponent
+    LogoutComponent,
+    RecipeListComponent
   ],
   imports: [
     FormsModule,

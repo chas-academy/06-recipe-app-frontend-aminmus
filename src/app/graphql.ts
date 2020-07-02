@@ -121,6 +121,17 @@ export const GET_RECIPE_LISTS_QUERY = gql`
     myRecipeLists {
     id,
     name,
+  }
+}`;
+export interface GetRecipeListResponse {
+  recipeList?: RecipeList;
+}
+
+export const GET_RECIPE_LIST_QUERY = gql`
+  query recipeList($id: ID!) {
+    recipeList(where: {id: $id}) {
+    id,
+    name,
     recipes {
       label,
       encodedUri,

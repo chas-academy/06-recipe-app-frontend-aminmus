@@ -1,0 +1,16 @@
+<p>recipe-list works!</p>
+
+<mat-card *ngIf="recipeList">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>{{recipeList.name}}</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list *ngIf="recipeList.recipes.length > 0">
+            <a *ngFor="let recipe of recipeList.recipes" class="link" href="recipe/{{recipe.encodedUri}}">
+                <mat-list-item>{{recipe.label}}</mat-list-item>
+            </a>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

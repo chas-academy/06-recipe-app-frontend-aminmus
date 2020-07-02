@@ -1,4 +1,3 @@
-<p>recipe-lists works!</p>
 <mat-card>
     <mat-card-header>
         <mat-card-title>
@@ -16,10 +15,17 @@
         </form>
     </mat-card-content>
 </mat-card>
-
-<div *ngIf="recipeLists">
-    <h2>My Recipe Lists</h2>
-    <li *ngFor="let list of recipeLists">
-        {{list.name}}
-    </li>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h2>My Recipe Lists</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list *ngIf="recipeLists">
+            <a *ngFor="let list of recipeLists" class="link" href="recipe-list/{{list.id}}">
+                <mat-list-item>{{list.name}}</mat-list-item>
+            </a>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
