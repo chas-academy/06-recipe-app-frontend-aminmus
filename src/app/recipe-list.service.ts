@@ -9,7 +9,9 @@ import {
   GetRecipeListResponse,
   GET_RECIPE_LIST_QUERY,
   AddRecipeToListMutationResponse,
-  ADD_RECIPE_TO_LIST_MUTATION
+  ADD_RECIPE_TO_LIST_MUTATION,
+  DeleteRecipeListMutationResponse,
+  DELETE_RECIPE_LIST_MUTATION
 } from './graphql';
 
 @Injectable({
@@ -26,10 +28,10 @@ export class RecipeListService {
   }
 
   /** Gets recipe lists for the logged in user, looks at the Authorization header for auth token */
-  public getRecipeList(id: string) {
+  public getRecipeList(listId: string) {
     return this.apollo.query<GetRecipeListResponse>({
       query: GET_RECIPE_LIST_QUERY,
-      variables: { id },
+      variables: { listId },
     }).toPromise();
   }
 
@@ -45,6 +47,13 @@ export class RecipeListService {
     return this.apollo.mutate<AddRecipeToListMutationResponse>({
       mutation: ADD_RECIPE_TO_LIST_MUTATION,
       variables: { encodedRecipeUri, listId }
+    }).toPromise();
+  }
+
+  public deleteRecipeList(listId: string) {
+    return this.apollo.mutate<DeleteRecipeListMutationResponse>({
+      mutation: DELETE_RECIPE_LIST_MUTATION,
+      variables: { listId }
     }).toPromise();
   }
 }

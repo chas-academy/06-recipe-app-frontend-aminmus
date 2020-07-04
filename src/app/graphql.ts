@@ -128,8 +128,8 @@ export interface GetRecipeListResponse {
 }
 
 export const GET_RECIPE_LIST_QUERY = gql`
-  query recipeList($id: ID!) {
-    recipeList(where: {id: $id}) {
+  query recipeList($listId: ID!) {
+    recipeList(where: {id: $listId}) {
     id,
     name,
     recipes {
@@ -174,3 +174,33 @@ mutation addRecipeToList($encodedRecipeUri: String!, $listId: ID!){
   }
 }
 `;
+
+export interface DeleteRecipeListMutationResponse {
+  deleteRecipeList?: {
+    id: string,
+    name: string,
+  };
+}
+
+export const DELETE_RECIPE_LIST_MUTATION = gql`
+  mutation deleteRecipeList($listId: ID!) {
+    deleteRecipeList(where: {id: $listId}) {
+      id,
+      name,
+    }
+  }
+`;
+
+// export interface UpdateRecipeListMutationResponse {
+//   updateRecipeList?: RecipeList;
+// }
+
+// export const UPDATE_RECIPE_LIST_MUTATION = gql`
+// mutation updateRecipeList($listId: ID!, ){
+//   updateRecipeList(recipeURI: $encodedRecipeUri, id: $listId)
+//   {
+//     id,
+//     updatedAt,
+//   }
+// }
+// `;
