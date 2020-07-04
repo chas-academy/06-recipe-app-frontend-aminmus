@@ -23,9 +23,8 @@
     </mat-card-header>
     <mat-card-content>
         <mat-list *ngIf="recipeLists">
-            <a *ngFor="let list of recipeLists" class="link" href="recipe-list/{{list.id}}">
-                <mat-list-item>{{list.name}}</mat-list-item>
-            </a>
+            <a *ngFor="let list of recipeLists" mat-list-item href="recipe-list/{{list.id}}"
+                class="noDecoration">{{list.name}}</a>
         </mat-list>
     </mat-card-content>
 </mat-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeListService } from 'app/recipe-list.service';
 import { RecipeList } from 'app/types';
 
@@ -12,7 +12,7 @@ export class RecipeListComponent implements OnInit {
   private listId: string;
   public recipeList: RecipeList;
 
-  constructor(private route: ActivatedRoute, private recipeListService: RecipeListService) { }
+  constructor(private route: ActivatedRoute, private recipeListService: RecipeListService, private router: Router) { }
 
   async ngOnInit() {
     console.log('yo');
@@ -22,4 +22,9 @@ export class RecipeListComponent implements OnInit {
     console.log(this.recipeList);
   }
 
+  async deleteList() {
+    const response = await this.recipeListService.deleteRecipeList(this.listId);
+
+    if (response.data.deleteRecipeList.id) { this.router.navigateByUrl('/profile'); }
+  }
 }
