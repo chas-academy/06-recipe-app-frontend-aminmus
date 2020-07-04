@@ -191,16 +191,17 @@ export const DELETE_RECIPE_LIST_MUTATION = gql`
   }
 `;
 
-// export interface UpdateRecipeListMutationResponse {
-//   updateRecipeList?: RecipeList;
-// }
+export interface UpdateRecipeListMutationResponse {
+  updateRecipeList?: RecipeList;
+}
 
-// export const UPDATE_RECIPE_LIST_MUTATION = gql`
-// mutation updateRecipeList($listId: ID!, ){
-//   updateRecipeList(recipeURI: $encodedRecipeUri, id: $listId)
-//   {
-//     id,
-//     updatedAt,
-//   }
-// }
-// `;
+export const UPDATE_RECIPE_LIST_MUTATION = gql`
+mutation updateRecipeList($listId: ID!, $data: RecipeListUpdateInput!){
+  updateRecipeList(data: $data, where: { id: $listId })
+  {
+    id,
+    name,
+    updatedAt,
+  }
+}
+`;

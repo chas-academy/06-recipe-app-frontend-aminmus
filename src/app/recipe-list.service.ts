@@ -11,8 +11,20 @@ import {
   AddRecipeToListMutationResponse,
   ADD_RECIPE_TO_LIST_MUTATION,
   DeleteRecipeListMutationResponse,
-  DELETE_RECIPE_LIST_MUTATION
+  DELETE_RECIPE_LIST_MUTATION,
+  UpdateRecipeListMutationResponse,
+  UPDATE_RECIPE_LIST_MUTATION
 } from './graphql';
+import { Recipe } from './types';
+import { RecipeListUpdateInput } from 'generated/globalTypes';
+
+// interface UpdateRecipeListInput {
+//   name?: string;
+//   recipes?: {
+//     add?: [Recipe['encodedUri']];
+//     remove?: [Recipe['encodedUri']];
+//   };
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +65,20 @@ export class RecipeListService {
   public deleteRecipeList(listId: string) {
     return this.apollo.mutate<DeleteRecipeListMutationResponse>({
       mutation: DELETE_RECIPE_LIST_MUTATION,
-      variables: { listId }
+      variables: { listId },
     }).toPromise();
+  }
+
+  public updateRecipeList(listId: string, data: RecipeListUpdateInput) {
+    return this.apollo.mutate<UpdateRecipeListMutationResponse>({
+      mutation: UPDATE_RECIPE_LIST_MUTATION,
+      variables: {
+        listId,
+        data,
+        // ...(data?.name ? { shouldRename: true, name: data.name } : { shouldRename: false }),
+        // ...(data?.recipes?.add ? { shouldAddRecipes: true, recipesToAdd: data.recipes.add } : { shouldAddRecipes: false }),
+        // ...(data?.recipes?.remove ? { shouldRemoveRecipes: true, recipesToRemove: data.recipes.remove } : { shouldRemoveRecipse: false }),
+      },
+    });
   }
 }

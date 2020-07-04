@@ -42,7 +42,7 @@ export interface Recipe extends Entity {
 export interface RecipeList extends Entity {
   id: string;
   name: string;
-  recipes: Recipe[];
+  recipes?: Recipe[];
 }
 
 export interface ICheckBoxItem {
