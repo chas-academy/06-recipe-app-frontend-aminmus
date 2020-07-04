@@ -1,3 +1,8 @@
+export interface Entity {
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
 export interface SearchFilter {
   healthLabels?: HealthEnum[];
   dietLabels?: DietEnum[];
@@ -19,7 +24,7 @@ export enum DietEnum {
   lowCarb = 'lowCarb',
 }
 
-export interface Recipe {
+export interface Recipe extends Entity {
   encodedUri: string;
   label: string;
   image: string;
@@ -34,7 +39,7 @@ export interface Recipe {
   healthLabels?: string[];
 }
 
-export interface RecipeList {
+export interface RecipeList extends Entity {
   id: string;
   name: string;
   recipes: Recipe[];
