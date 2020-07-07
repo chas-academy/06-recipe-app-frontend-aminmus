@@ -36,4 +36,9 @@ export class RecipeListComponent implements OnInit {
       this.isRenamingList = false;
     }
   }
+
+  async removeRecipe(encodedUri: string) {
+    const response = await this.recipeListService.updateRecipeList(this.listId, { recipes: { disconnect: [{ encodedUri }] } });
+    this.recipeList = response.data.updateRecipeList;
+  }
 }

@@ -1,12 +1,12 @@
 <mat-card *ngIf="recipeList">
     <mat-card-header>
-        <form *ngIf="isRenamingList" (submit)="renameList()">
+        <ng-container *ngIf="isRenamingList" (ngSubmit)="renameList()">
             <mat-form-field>
-                <input matInput [formControl]="newListName" value="{{recipeList.name}}">
+                <input matInput [formControl]="newListName" placeholder="{{recipeList?.name}}">
             </mat-form-field>
             <button mat-button color="warn" (click)="isRenamingList = false">Cancel</button>
-            <button mat-button type="submit" color="primary">Confirm</button>
-        </form>
+            <button mat-button color="primary" (click)="renameList()">Confirm</button>
+        </ng-container>
 
         <ng-container *ngIf="!isRenamingList">
             <mat-card-title>{{recipeList.name}}</mat-card-title>
@@ -18,10 +18,14 @@
     </mat-card-header>
     <mat-card-content>
         <mat-list *ngIf="recipeList.recipes.length > 0">
-            <a mat-list-item *ngFor="let recipe of recipeList.recipes" class="noDecoration"
-                href="recipe/{{recipe.encodedUri}}">
-                {{recipe.label}}
-            </a>
+            <mat-list-item *ngFor="let recipe of recipeList.recipes">
+                <a matLine class="noDecoration" href="recipe/{{recipe.encodedUri}}">
+                    {{recipe.label}}
+                </a>
+                <button mat-icon-button color="warn" (click)="removeRecipe(recipe.encodedUri)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </mat-list-item>
         </mat-list>
     </mat-card-content>
 </mat-card>

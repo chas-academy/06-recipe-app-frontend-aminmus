@@ -202,6 +202,11 @@ mutation updateRecipeList($listId: ID!, $data: RecipeListUpdateInput!){
     id,
     name,
     updatedAt,
+    recipes {
+      encodedUri,
+      label,
+      image,
+    }
   }
 }
 `;
