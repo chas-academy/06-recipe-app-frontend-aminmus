@@ -79,6 +79,6 @@ export class RecipeListService {
         // ...(data?.recipes?.add ? { shouldAddRecipes: true, recipesToAdd: data.recipes.add } : { shouldAddRecipes: false }),
         // ...(data?.recipes?.remove ? { shouldRemoveRecipes: true, recipesToRemove: data.recipes.remove } : { shouldRemoveRecipse: false }),
       },
-    });
+    }).toPromise();
   }
 }

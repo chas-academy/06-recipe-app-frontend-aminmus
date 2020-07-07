@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeListService } from 'app/recipe-list.service';
 import { RecipeList } from 'app/types';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,20 +12,28 @@ import { RecipeList } from 'app/types';
 export class RecipeListComponent implements OnInit {
   private listId: string;
   public recipeList: RecipeList;
+  public isRenamingList = false;
+  public newListName: FormControl = new FormControl('', [Validators.minLength(1), Validators.required]);
 
   constructor(private route: ActivatedRoute, private recipeListService: RecipeListService, private router: Router) { }
 
   async ngOnInit() {
-    console.log('yo');
     this.route.params.subscribe((params) => this.listId = params.id);
     const { data: { recipeList } } = await this.recipeListService.getRecipeList(this.listId);
     this.recipeList = recipeList;
-    console.log(this.recipeList);
   }
 
   async deleteList() {
     const response = await this.recipeListService.deleteRecipeList(this.listId);
 
     if (response.data.deleteRecipeList.id) { this.router.navigateByUrl('/profile'); }
+  }
+
+  async renameList() {
+    if (this.newListName.valid) {
+      const response = await this.recipeListService.updateRecipeList(this.listId, { name: this.newListName.value.toString() });
+      this.recipeList.name = response.data.updateRecipeList.name;
+      this.isRenamingList = false;
+    }
   }
 }
