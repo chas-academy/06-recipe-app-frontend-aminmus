@@ -1,22 +1,38 @@
 <div *ngIf="recipe">
 
-    <h1>{{recipe.label}}</h1>
-    <div>
-        <img *ngIf="recipe.image" src="{{recipe.image}}" alt="{{recipe.label}}">
-    </div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{recipe.label}}</mat-card-title>
+            <mat-card-subtitle><a href="{{recipe.sourceUrl}}">{{recipe.source}}</a></mat-card-subtitle>
+        </mat-card-header>
+        <img *ngIf="recipe.image" mat-card-image src="{{recipe.image}}" alt="{{recipe.label}}">
+        <mat-card-actions>
+            <ng-container *ngIf=isLoggedIn>
+                <h2>Add to recipe list</h2>
 
-
-    <div *ngIf="isLoggedIn">
-        <h2>Add to recipe list</h2>
-
-        <mat-form-field>
-            <mat-label>Recipe list</mat-label>
-            <mat-select [formControl]="chosenListId">
-                <mat-option *ngFor="let list of myRecipeLists" [value]="list.id">
-                    {{list.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button mat-raised-button (click)="saveToList()">Save to list</button>
-    </div>
+                <mat-form-field>
+                    <mat-label>Recipe list</mat-label>
+                    <mat-select [formControl]="chosenListId">
+                        <mat-option *ngFor="let list of myRecipeLists" [value]="list.id">
+                            {{list.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button (click)="saveToList()">Save to list</button>
+            </ng-container>
+        </mat-card-actions>
+        <mat-card-content>
+            <mat-chip-list *ngIf="recipe?.healthLabels?.length > 0">
+                <mat-chip *ngFor="let healthLabel of recipe.healthLabels">{{healthLabel}}</mat-chip>
+            </mat-chip-list>
+            <mat-chip-list *ngIf="recipe?.dietLabels?.length > 0">
+                <mat-chip *ngFor="let dietLabel of recipe.dietLabels">{{dietLabel}}</mat-chip>
+            </mat-chip-list>
+            <mat-list>
+                <h2 matLine>Ingredients</h2>
+                <mat-card-subtitle>{{recipe.servings}} servings</mat-card-subtitle>
+                <mat-list-item *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
 </div>
