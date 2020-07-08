@@ -19,11 +19,12 @@
     <mat-card-content>
         <mat-list *ngIf="recipeList.recipes.length > 0">
             <mat-list-item *ngFor="let recipe of recipeList.recipes">
+                <img matListAvatar src="{{recipe.image}}" alt="{{recipe.label}}">
                 <a matLine class="noDecoration" href="recipe/{{recipe.encodedUri}}">
                     {{recipe.label}}
                 </a>
-                <button mat-icon-button color="warn" (click)="removeRecipe(recipe.encodedUri)">
-                    <mat-icon>remove</mat-icon>
+                <button mat-icon-button color="primary" (click)="removeRecipe(recipe.encodedUri)">
+                    <mat-icon>delete</mat-icon>
                 </button>
             </mat-list-item>
         </mat-list>

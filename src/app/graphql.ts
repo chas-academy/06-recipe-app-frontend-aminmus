@@ -135,6 +135,7 @@ export const GET_RECIPE_LIST_QUERY = gql`
     recipes {
       label,
       encodedUri,
+      image,
     },
   }
 }`;
