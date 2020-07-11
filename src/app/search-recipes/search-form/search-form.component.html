@@ -13,24 +13,24 @@
 
             <ng-container formGroupName="filters">
                 <section>
-                    <ng-container formArrayName="healthLabels">
+                    <div class="labels" formArrayName="healthLabels">
                         <ng-container [formGroup]="healthLabel" *ngFor="let healthLabel of healthLabels.controls">
                             <mat-checkbox name="{{healthLabel.get('id').value}}"
                                 [formControl]="healthLabel.get('selected')" type="checkbox"
                                 value="{{healthLabel.get('id').value}}" id="{{healthLabel.get('id').value}}">
                                 {{healthLabel.get('name').value}}</mat-checkbox>
                         </ng-container>
-                    </ng-container>
+                    </div>
                 </section>
 
                 <section>
-                    <ng-container formArrayName="dietLabels">
+                    <div class="labels" formArrayName="dietLabels">
                         <ng-container [formGroup]="dietLabels" *ngFor="let dietLabel of dietLabels.controls">
                             <mat-checkbox name="{{dietLabel.get('id').value}}" [formControl]="dietLabel.get('selected')"
                                 type="checkbox" value="{{dietLabel.get('id').value}}"
                                 id="{{dietLabel.get('id').value}}">{{dietLabel.get('name').value}}</mat-checkbox>
                         </ng-container>
-                    </ng-container>
+                    </div>
                 </section>
             </ng-container>
             <button mat-raised-button type="submit">Search</button>
