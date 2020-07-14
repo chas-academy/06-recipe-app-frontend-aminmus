@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 import { LogoutComponent } from './logout/logout.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
@@ -64,6 +65,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
     MatInputModule,
     MatSelectModule,
     MatChipsModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+form {
+  * {
+    margin: 0 0.5rem 0;
+  }
+}
+
+mat-list a {
+  margin: 0.5rem 1rem;
+}
+
+mat-divider.short {
+  position: unset;
+  left: unset;
+  width: 80%;
+}
