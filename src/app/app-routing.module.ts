@@ -14,11 +14,11 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 const routes: Routes = [
   { path: 'search', component: SearchRecipesComponent },
   { path: 'recipe/:uri', component: RecipeDetailsComponent },
-  { path: 'recipe-list/:id', component: RecipeListComponent },
+  { path: 'my-lists/:id', component: RecipeListComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'profile', component: RecipeListsComponent, canActivate: [AuthGuard] }
+  { path: 'my-lists', component: RecipeListsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

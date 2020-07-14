@@ -5,7 +5,7 @@
         <mat-nav-list>
             <a mat-list-item href="#">Home</a>
             <a mat-list-item href="/search">Find recipes</a>
-            <a mat-list-item *ngIf="isLoggedIn" href="/profile">My profile</a>
+            <a mat-list-item *ngIf="isLoggedIn" href="/my-lists">My profile</a>
             <a mat-list-item *ngIf="isLoggedIn" href="/logout">Log out</a>
             <a mat-list-item *ngIf="!isLoggedIn" href="/login">Log in</a>
             <a mat-list-item *ngIf="!isLoggedIn" href="/signup">Sign up</a>

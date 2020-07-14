@@ -26,7 +26,7 @@ export class RecipeListComponent implements OnInit {
   async deleteList() {
     const response = await this.recipeListService.deleteRecipeList(this.listId);
 
-    if (response.data.deleteRecipeList.id) { this.router.navigateByUrl('/profile'); }
+    if (response.data.deleteRecipeList.id) { this.router.navigateByUrl('/my-lists'); }
   }
 
   async renameList() {
