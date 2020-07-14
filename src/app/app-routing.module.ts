@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'my-lists', component: RecipeListsComponent, canActivate: [AuthGuard] }
+  { path: 'my-lists', component: RecipeListsComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: 'search' }
 ];
 
 @NgModule({
