@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# environment variables (production)
+src/environments/environment.prod.ts
+
 # generated code
 /src/generated/
 
