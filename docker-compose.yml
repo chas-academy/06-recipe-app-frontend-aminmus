@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  recipe-frontend:
+    build: .
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules # anonymous volume for node_modules only
+    restart: always
+    ports:
+      - "4200:4200"
